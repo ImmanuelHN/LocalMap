@@ -203,7 +203,7 @@ export default function LandingPage() {
       {/* ── SECTION 2: HOW LOCALHUB WORKS ─────────────────────── */}
       <section className="lh-section feature-band">
         <div className="section-heading centered lh-section-heading">
-          <span className="eyebrow">How It Works</span>
+          <span className="eyebrow">How LocalHub Works</span>
           <h2>How LocalHub Works</h2>
           <p className="lh-section-subtitle">
             A simple way to discover local businesses, connect directly with
