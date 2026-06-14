@@ -1,7 +1,13 @@
 import { ArrowLeft, LogIn } from "lucide-react";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { setPendingEmail } from "../utils/storage.js";
+import { getCurrentUser, getCustomerProfile, getBusinessProfile, getRiderProfile, setPendingEmail, setCurrentUser } from "../utils/storage.js";
+
+const homeByRole = {
+  customer: "/customer",
+  business: "/business",
+  rider: "/rider",
+};
 
 export default function LoginPage() {
   const navigate = useNavigate();
@@ -15,14 +21,29 @@ export default function LoginPage() {
   function handleSubmit(event) {
     event.preventDefault();
 
-    if (!form.email.includes("@") || !form.email.includes(".com")) {
-      setError("Use a demo email that contains @ and .com.");
+    if (!form.email.includes("@")) {
+      setError("Please enter a valid email address.");
       return;
     }
 
     if (!form.password.trim()) {
-      setError("Enter any password to continue.");
+      setError("Please enter your password.");
       return;
+    }
+
+    // Check if this email matches an existing logged-in user with a saved profile
+    const existingUser = getCurrentUser();
+    if (existingUser && existingUser.email === form.email) {
+      // Returning user — check if they have a complete profile
+      const hasProfile =
+        (existingUser.role === "customer" && getCustomerProfile()) ||
+        (existingUser.role === "business" && getBusinessProfile()) ||
+        (existingUser.role === "rider" && getRiderProfile());
+
+      if (hasProfile) {
+        navigate(homeByRole[existingUser.role] || "/role-selection");
+        return;
+      }
     }
 
     setPendingEmail(form.email);
@@ -37,9 +58,11 @@ export default function LoginPage() {
       </Link>
 
       <section className="auth-card">
-        <span className="eyebrow">Dummy authentication</span>
+        <span className="eyebrow">Welcome back</span>
         <h1>Login to LOCALHUB</h1>
-        <p>Use any password. The email only needs to include @ and .com.</p>
+        <p style={{ color: "var(--muted)", marginBottom: "4px" }}>
+          Enter your email and any password to continue.
+        </p>
 
         <form className="form-grid" onSubmit={handleSubmit}>
           <label>
@@ -49,7 +72,7 @@ export default function LoginPage() {
               type="email"
               value={form.email}
               onChange={updateField}
-              placeholder="demo@localhub.com"
+              placeholder="you@example.com"
             />
           </label>
           <label>
@@ -72,7 +95,7 @@ export default function LoginPage() {
         </form>
 
         <p className="auth-footnote">
-          New user? <Link to="/role-selection">Register by choosing a role</Link>
+          New here? <Link to="/role-selection">Create an account</Link>
         </p>
       </section>
     </main>

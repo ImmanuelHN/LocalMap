@@ -22,33 +22,52 @@ export default function ProfilePage() {
   function handleImage(event) {
     const file = event.target.files?.[0];
     if (!file) return;
-    setForm((current) => ({ ...current, profileImage: file.name }));
+    const url = URL.createObjectURL(file);
+    setForm((current) => ({ ...current, profileImage: url }));
   }
 
   function save(event) {
     event.preventDefault();
-    saveProfile({ ...storedProfiles, [user.role]: form });
+    const updatedRoleProfile = {
+      ...roleProfile,
+      ...form,
+    };
+    saveProfile({ ...storedProfiles, [user.role]: updatedRoleProfile });
     setCurrentUser({ ...user, email: form.email, name: form.name });
     setSaved(true);
   }
+
+  const initial = form.name?.slice(0, 1)?.toUpperCase() || "U";
 
   return (
     <main className="page-stack">
       <section className="section-heading">
         <span className="eyebrow">Profile</span>
         <h1>Your {user.role} profile</h1>
-        <p>Profile details are stored locally and used across the prototype UI.</p>
+        <p>Your profile details are stored locally and shown across the app.</p>
       </section>
 
       <section className="content-card two-column">
+        {/* Preview */}
         <div className="profile-preview">
-          <div className="profile-avatar">{form.name?.slice(0, 1) || "L"}</div>
+          {form.profileImage ? (
+            <img
+              src={form.profileImage}
+              alt="Profile"
+              style={{ width: 80, height: 80, borderRadius: "50%", objectFit: "cover", marginBottom: 12 }}
+            />
+          ) : (
+            <div className="profile-avatar">{initial}</div>
+          )}
           <h2>{form.name || "LOCALHUB User"}</h2>
-          <p>{form.email}</p>
+          <p style={{ color: "var(--muted)" }}>{form.email}</p>
           <span className="category-pill">{user.role}</span>
-          {form.profileImage ? <p className="muted-note">Image: {form.profileImage}</p> : null}
+          {roleProfile.address && (
+            <p className="muted-note" style={{ marginTop: 8 }}>📍 {roleProfile.address}</p>
+          )}
         </div>
 
+        {/* Form */}
         <form className="form-grid" onSubmit={save}>
           <label>
             Name
@@ -60,18 +79,21 @@ export default function ProfilePage() {
           </label>
           <label>
             Email
-            <input name="email" value={form.email} onChange={updateField} placeholder="demo@localhub.com" />
+            <input name="email" value={form.email} onChange={updateField} placeholder="you@example.com" />
           </label>
           <label className="file-label">
-            Profile Image
+            Profile Photo
             <input type="file" accept="image/*" onChange={handleImage} />
-            <span><Upload size={16} /> Upload image</span>
+            <span>
+              <Upload size={16} />
+              {form.profileImage ? "Change photo" : "Upload photo"}
+            </span>
           </label>
           <button className="button primary" type="submit">
             <Save size={17} />
             Save Profile
           </button>
-          {saved ? <p className="success-note">Profile saved locally.</p> : null}
+          {saved ? <p className="success-note">Profile saved successfully.</p> : null}
         </form>
       </section>
     </main>

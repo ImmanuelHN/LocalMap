@@ -1,34 +1,26 @@
-import { Save, Upload } from "lucide-react";
+import { Save } from "lucide-react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import MapView from "../../components/MapView.jsx";
-import {
-  getRiderProfile,
-  saveRiderProfile,
-  upsertRider,
-} from "../../utils/storage.js";
+import { getRiderProfile, getUserLocation, saveRiderProfile, upsertRider } from "../../utils/storage.js";
 
 export default function RiderRegistration() {
   const navigate = useNavigate();
   const existing = getRiderProfile();
+  const userLoc = getUserLocation();
+  const defaultLoc = existing?.location || userLoc || { lat: 17.4282, lng: 78.4241 };
+
   const [form, setForm] = useState({
     name: existing?.name || "",
     phone: existing?.phone || "",
-    photo: existing?.photo || "",
     vehicleType: existing?.vehicleType || "Bike",
     vehicleNumber: existing?.vehicleNumber || "",
     licenseNumber: existing?.licenseNumber || "",
   });
-  const [location, setLocation] = useState(existing?.location || { lat: 17.4282, lng: 78.4241 });
+  const [location, setLocation] = useState(defaultLoc);
 
   function updateField(event) {
     setForm((current) => ({ ...current, [event.target.name]: event.target.value }));
-  }
-
-  function handlePhoto(event) {
-    const file = event.target.files?.[0];
-    if (!file) return;
-    setForm((current) => ({ ...current, photo: file.name }));
   }
 
   function save(event) {
@@ -36,13 +28,16 @@ export default function RiderRegistration() {
     const profile = {
       ...form,
       id: existing?.id || "rider-owned",
-      rating: existing?.rating || 4.8,
+      rating: existing?.rating || 5.0,
       status: "Available",
       location,
     };
 
     saveRiderProfile(profile);
     upsertRider(profile);
+
+    // Update pinned location
+    window.localStorage.setItem("localhub_user_location", JSON.stringify(location));
     navigate("/rider");
   }
 
@@ -51,23 +46,18 @@ export default function RiderRegistration() {
       <section className="section-heading">
         <span className="eyebrow">Rider registration</span>
         <h1>{existing ? "Edit rider profile" : "Register as a rider"}</h1>
-        <p>Add identity, vehicle, license, and current map location details.</p>
+        <p>Add your identity, vehicle, licence details, and pin your current location.</p>
       </section>
 
       <section className="split-layout">
         <form className="content-card form-grid" onSubmit={save}>
           <label>
-            Name
+            Full Name
             <input name="name" value={form.name} onChange={updateField} required />
           </label>
           <label>
             Phone
             <input name="phone" value={form.phone} onChange={updateField} required />
-          </label>
-          <label className="file-label">
-            Photo
-            <input type="file" accept="image/*" onChange={handlePhoto} />
-            <span><Upload size={16} /> {form.photo || "Upload photo"}</span>
           </label>
           <label>
             Vehicle Type
@@ -88,7 +78,7 @@ export default function RiderRegistration() {
           </label>
           <button className="button primary" type="submit">
             <Save size={17} />
-            Save Rider
+            Save Rider Profile
           </button>
         </form>
 
@@ -96,11 +86,14 @@ export default function RiderRegistration() {
           <div className="section-heading compact">
             <div>
               <span className="eyebrow">Current location</span>
-              <h2>Place rider marker</h2>
+              <h2>Place your rider marker</h2>
+              <p style={{ margin: "4px 0 0", fontSize: 13, color: "var(--muted)" }}>
+                Tap the map or click "Current location" to use GPS.
+              </p>
             </div>
           </div>
           <MapView picker selectedPosition={location} onLocationSelect={setLocation} markers={[]} />
-          <p className="muted-note">Selected: {location.lat}, {location.lng}</p>
+          <p className="muted-note">Pinned: {location.lat}, {location.lng}</p>
         </div>
       </section>
     </main>

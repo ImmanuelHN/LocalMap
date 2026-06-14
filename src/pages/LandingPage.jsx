@@ -1,34 +1,58 @@
 import { MapPinned, MessageCircle, ShieldCheck, Star, Truck } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import MapView from "../components/MapView.jsx";
-import { getBusinesses } from "../utils/storage.js";
+import { getBusinesses, getCurrentUser, getCustomerProfile, getBusinessProfile, getRiderProfile } from "../utils/storage.js";
+
+const homeByRole = {
+  customer: "/customer",
+  business: "/business",
+  rider: "/rider",
+};
 
 const features = [
   {
     title: "Map Discovery",
-    text: "Browse nearby sellers and services from a live OpenStreetMap interface.",
+    text: "Browse nearby sellers and services on a live OpenStreetMap — pinned to your real location.",
     icon: MapPinned,
   },
   {
     title: "Direct Chat",
-    text: "Customers can message business owners before ordering.",
+    text: "Message business owners directly before placing an order.",
     icon: MessageCircle,
   },
   {
-    title: "Reviews",
-    text: "Ratings, written reviews, and photo uploads build local trust.",
+    title: "Ratings & Reviews",
+    text: "Honest ratings and written reviews build trust in your local community.",
     icon: Star,
   },
   {
     title: "Local Delivery",
-    text: "Riders can accept pickup and drop jobs with visible map points.",
+    text: "Riders accept pickup and drop jobs with live map waypoints.",
     icon: Truck,
   },
 ];
 
 export default function LandingPage() {
+  const navigate = useNavigate();
+  const user = getCurrentUser();
+
+  // If user is logged in and has a profile, let them jump straight to their dashboard
+  function handleGetStarted(e) {
+    if (user?.role) {
+      const hasProfile =
+        (user.role === "customer" && getCustomerProfile()) ||
+        (user.role === "business" && getBusinessProfile()) ||
+        (user.role === "rider" && getRiderProfile());
+
+      if (hasProfile) {
+        e.preventDefault();
+        navigate(homeByRole[user.role]);
+      }
+    }
+  }
+
   const markers = getBusinesses()
-    .slice(0, 6)
+    .slice(0, 8)
     .map((business) => ({
       id: business.id,
       type: "business",
@@ -45,27 +69,33 @@ export default function LandingPage() {
         </div>
         <div className="hero-overlay" />
         <div className="hero-content">
-          <span className="eyebrow">LOCALHUB prototype</span>
+          <span className="eyebrow">LOCALHUB — Your neighbourhood marketplace</span>
           <h1>Discover Local Businesses Around You</h1>
           <p>
-            Connect directly with nearby sellers, home businesses, cloud kitchens,
-            freelancers and local services.
+            Connect directly with nearby sellers, home kitchens, freelancers and
+            local services — pinned to your real location on the map.
           </p>
           <div className="hero-actions">
-            <Link className="button primary" to="/role-selection">
+            <Link className="button primary" to="/role-selection" onClick={handleGetStarted}>
               Get Started
             </Link>
-            <Link className="button secondary" to="/login">
-              Login
-            </Link>
+            {user?.role ? (
+              <Link className="button secondary" to={homeByRole[user.role] || "/role-selection"}>
+                Go to Dashboard
+              </Link>
+            ) : (
+              <Link className="button secondary" to="/login">
+                Login
+              </Link>
+            )}
           </div>
         </div>
       </section>
 
       <section className="feature-band">
         <div className="section-heading centered">
-          <span className="eyebrow">Built for stakeholder demos</span>
-          <h2>A real product feel without backend setup</h2>
+          <span className="eyebrow">How it works</span>
+          <h2>Location-first, community-built</h2>
         </div>
 
         <div className="feature-grid">
@@ -84,7 +114,7 @@ export default function LandingPage() {
 
       <section className="trust-strip">
         <ShieldCheck size={22} />
-        <p>No billing, no API keys, no backend. The prototype runs with OpenStreetMap and LocalStorage.</p>
+        <p>No backend, no billing. Runs on OpenStreetMap + your browser's local storage.</p>
       </section>
     </main>
   );

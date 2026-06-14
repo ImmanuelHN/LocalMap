@@ -19,7 +19,7 @@ import BusinessReviews from "./pages/Business/BusinessReviews.jsx";
 import RiderDashboard from "./pages/Rider/RiderDashboard.jsx";
 import RiderRegistration from "./pages/Rider/RiderRegistration.jsx";
 import RiderJobs from "./pages/Rider/RiderJobs.jsx";
-import { getBusinessProfile, getCurrentUser, getRiderProfile } from "./utils/storage.js";
+import { getBusinessProfile, getCurrentUser, getRiderProfile, getCustomerProfile } from "./utils/storage.js";
 
 const homeByRole = {
   customer: "/customer",
@@ -27,37 +27,11 @@ const homeByRole = {
   rider: "/rider",
 };
 
-function ProtectedLayout({ allowedRole }) {
-  const user = getCurrentUser();
-  const location = useLocation();
-
-  if (!user?.role) {
-    return <Navigate to="/login" replace state={{ from: location.pathname }} />;
-  }
-
-  if (allowedRole && user.role !== allowedRole) {
-    return <Navigate to={homeByRole[user.role] || "/role-selection"} replace />;
-  }
-
-  if (
-    user.role === "business" &&
-    !getBusinessProfile() &&
-    location.pathname !== "/business/register"
-  ) {
-    return <Navigate to="/business/register" replace />;
-  }
-
-  if (
-    user.role === "rider" &&
-    !getRiderProfile() &&
-    location.pathname !== "/rider/register"
-  ) {
-    return <Navigate to="/rider/register" replace />;
-  }
-
+// Shell layout that wraps all authenticated pages
+function AppShell({ role }) {
   return (
     <div className="app-shell">
-      <Sidebar role={user.role} />
+      <Sidebar role={role} />
       <div className="main-panel">
         <Navbar />
         <NotificationCenter />
@@ -67,16 +41,49 @@ function ProtectedLayout({ allowedRole }) {
   );
 }
 
+// Guard: must be logged in + correct role + have a complete profile
+function ProtectedLayout({ allowedRole, requireProfile = true }) {
+  const user = getCurrentUser();
+  const location = useLocation();
+
+  // Not logged in → login
+  if (!user?.role) {
+    return <Navigate to="/login" replace state={{ from: location.pathname }} />;
+  }
+
+  // Wrong role → own dashboard
+  if (allowedRole && user.role !== allowedRole) {
+    return <Navigate to={homeByRole[user.role] || "/role-selection"} replace />;
+  }
+
+  // Profile required but missing → back to onboarding
+  if (requireProfile) {
+    if (user.role === "business" && !getBusinessProfile()) {
+      return <Navigate to="/role-selection" replace />;
+    }
+    if (user.role === "rider" && !getRiderProfile()) {
+      return <Navigate to="/role-selection" replace />;
+    }
+    if (user.role === "customer" && !getCustomerProfile()) {
+      return <Navigate to="/role-selection" replace />;
+    }
+  }
+
+  return <AppShell role={user.role} />;
+}
+
 export default function AppRoutes() {
   const user = getCurrentUser();
 
   return (
     <Routes>
+      {/* Public pages */}
       <Route path="/" element={<LandingPage />} />
       <Route path="/login" element={<LoginPage />} />
       <Route path="/role-selection" element={<RoleSelectionPage />} />
 
-      <Route element={<ProtectedLayout allowedRole="customer" />}>
+      {/* Customer routes — profile required */}
+      <Route element={<ProtectedLayout allowedRole="customer" requireProfile />}>
         <Route path="/customer" element={<CustomerDashboard />} />
         <Route path="/customer/business/:businessId" element={<BusinessDetails />} />
         <Route path="/customer/orders" element={<CustomerOrders />} />
@@ -86,23 +93,34 @@ export default function AppRoutes() {
         <Route path="/customer/profile" element={<ProfilePage />} />
       </Route>
 
-      <Route element={<ProtectedLayout allowedRole="business" />}>
-        <Route path="/business" element={<BusinessDashboard />} />
+      {/* Business edit profile — no profile guard (so owner can fill/edit) */}
+      <Route element={<ProtectedLayout allowedRole="business" requireProfile={false} />}>
         <Route path="/business/register" element={<RegisterBusiness />} />
+      </Route>
+
+      {/* Business routes — profile required */}
+      <Route element={<ProtectedLayout allowedRole="business" requireProfile />}>
+        <Route path="/business" element={<BusinessDashboard />} />
         <Route path="/business/orders" element={<ManageOrders />} />
         <Route path="/business/reviews" element={<BusinessReviews />} />
         <Route path="/business/chat" element={<ChatPage />} />
         <Route path="/business/profile" element={<ProfilePage />} />
       </Route>
 
-      <Route element={<ProtectedLayout allowedRole="rider" />}>
-        <Route path="/rider" element={<RiderDashboard />} />
+      {/* Rider registration — no profile guard */}
+      <Route element={<ProtectedLayout allowedRole="rider" requireProfile={false} />}>
         <Route path="/rider/register" element={<RiderRegistration />} />
+      </Route>
+
+      {/* Rider routes — profile required */}
+      <Route element={<ProtectedLayout allowedRole="rider" requireProfile />}>
+        <Route path="/rider" element={<RiderDashboard />} />
         <Route path="/rider/jobs" element={<RiderJobs />} />
         <Route path="/rider/history" element={<RiderJobs showHistory />} />
         <Route path="/rider/profile" element={<ProfilePage />} />
       </Route>
 
+      {/* Catch-all */}
       <Route path="*" element={<Navigate to={user?.role ? homeByRole[user.role] : "/"} replace />} />
     </Routes>
   );

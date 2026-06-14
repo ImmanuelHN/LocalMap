@@ -89,6 +89,8 @@ export function setCurrentUser(user) {
 export function logout() {
   if (!hasStorage()) return;
   window.localStorage.removeItem(KEYS.user);
+  window.localStorage.removeItem(KEYS.pendingEmail);
+  window.localStorage.removeItem("localhub_user_location");
 }
 
 export function setPendingEmail(email) {
@@ -99,8 +101,81 @@ export function getPendingEmail() {
   return read(KEYS.pendingEmail, "");
 }
 
+export function getUserLocation() {
+  if (typeof window === "undefined" || !window.localStorage) return null;
+  const val = window.localStorage.getItem("localhub_user_location");
+  if (val) {
+    try {
+      return JSON.parse(val);
+    } catch {
+      return null;
+    }
+  }
+  const user = getCurrentUser();
+  if (!user) return null;
+  if (user.role === "customer") {
+    const profile = getProfile();
+    return profile.customer?.location || null;
+  }
+  if (user.role === "business") {
+    const profile = getBusinessProfile();
+    return profile?.location || null;
+  }
+  if (user.role === "rider") {
+    const profile = getRiderProfile();
+    return profile?.location || null;
+  }
+  return null;
+}
+
+export function calculateDistance(lat1, lon1, lat2, lon2) {
+  if (lat1 === undefined || lon1 === undefined || lat2 === undefined || lon2 === undefined) return 0;
+  const R = 6371; // Radius of the earth in km
+  const dLat = (lat2 - lat1) * (Math.PI / 180);
+  const dLon = (lon2 - lon1) * (Math.PI / 180);
+  const a =
+    Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+    Math.cos(lat1 * (Math.PI / 180)) *
+      Math.cos(lat2 * (Math.PI / 180)) *
+      Math.sin(dLon / 2) *
+      Math.sin(dLon / 2);
+  const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+  const d = R * c; // Distance in km
+  return Number(d.toFixed(1));
+}
+
+const seededIds = new Set([
+  "home-bakery",
+  "cloud-kitchen",
+  "tailor-shop",
+  "handmade-crafts",
+  "beauty-services",
+  "electrician",
+  "mechanic",
+  "freelance-designer",
+  "organic-grocer",
+  "pet-care-home"
+]);
+
 export function getBusinesses() {
-  return read(KEYS.businesses, businessesSeed);
+  const list = read(KEYS.businesses, businessesSeed);
+  const userLoc = getUserLocation();
+  if (userLoc) {
+    return list.map((b) => {
+      let realLocation = b.location;
+      if (seededIds.has(b.id)) {
+        const dLat = b.location.lat - 17.4305;
+        const dLng = b.location.lng - 78.407;
+        realLocation = {
+          lat: Number((userLoc.lat + dLat).toFixed(5)),
+          lng: Number((userLoc.lng + dLng).toFixed(5))
+        };
+      }
+      const distance = calculateDistance(userLoc.lat, userLoc.lng, realLocation.lat, realLocation.lng);
+      return { ...b, location: realLocation, distance };
+    });
+  }
+  return list;
 }
 
 export function saveBusinesses(businesses) {
@@ -157,8 +232,26 @@ export function updateOrderStatus(orderId, status) {
   return write(KEYS.orders, updated);
 }
 
+const seededRiderIds = new Set(["rider-1", "rider-2", "rider-3", "rider-4", "rider-5"]);
+
 export function getRiders() {
-  return read(KEYS.riders, ridersSeed);
+  const list = read(KEYS.riders, ridersSeed);
+  const userLoc = getUserLocation();
+  if (userLoc) {
+    return list.map((r) => {
+      let realLocation = r.location;
+      if (seededRiderIds.has(r.id)) {
+        const dLat = r.location.lat - 17.4305;
+        const dLng = r.location.lng - 78.407;
+        realLocation = {
+          lat: Number((userLoc.lat + dLat).toFixed(5)),
+          lng: Number((userLoc.lng + dLng).toFixed(5))
+        };
+      }
+      return { ...r, location: realLocation };
+    });
+  }
+  return list;
 }
 
 export function saveRiders(riders) {
@@ -175,7 +268,31 @@ export function upsertRider(rider) {
 }
 
 export function getDeliveryJobs() {
-  return read(KEYS.deliveryJobs, deliveryJobsSeed);
+  const list = read(KEYS.deliveryJobs, deliveryJobsSeed);
+  const userLoc = getUserLocation();
+  if (userLoc) {
+    return list.map((j) => {
+      let pickupLocation = j.pickupLocation;
+      let dropLocation = j.dropLocation;
+      if (j.id.startsWith("delivery-")) {
+        const dPickupLat = j.pickupLocation.lat - 17.4305;
+        const dPickupLng = j.pickupLocation.lng - 78.407;
+        const dDropLat = j.dropLocation.lat - 17.4305;
+        const dDropLng = j.dropLocation.lng - 78.407;
+        pickupLocation = {
+          lat: Number((userLoc.lat + dPickupLat).toFixed(5)),
+          lng: Number((userLoc.lng + dPickupLng).toFixed(5))
+        };
+        dropLocation = {
+          lat: Number((userLoc.lat + dDropLat).toFixed(5)),
+          lng: Number((userLoc.lng + dDropLng).toFixed(5))
+        };
+      }
+      const distance = calculateDistance(pickupLocation.lat, pickupLocation.lng, dropLocation.lat, dropLocation.lng);
+      return { ...j, pickupLocation, dropLocation, distance };
+    });
+  }
+  return list;
 }
 
 export function updateDeliveryStatus(jobId, status) {
@@ -198,6 +315,11 @@ export function getRiderProfile() {
 
 export function saveRiderProfile(profile) {
   return write(KEYS.riderProfile, profile);
+}
+
+export function getCustomerProfile() {
+  const profiles = getProfile();
+  return profiles.customer || null;
 }
 
 export function getProfile() {

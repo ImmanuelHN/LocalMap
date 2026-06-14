@@ -3,8 +3,10 @@ import { LocateFixed } from "lucide-react";
 import { useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 import { MapContainer, Marker, Popup, TileLayer, useMap, useMapEvents } from "react-leaflet";
+import { getUserLocation } from "../utils/storage.js";
 
-const defaultCenter = [17.4305, 78.407];
+const userLoc = getUserLocation();
+const defaultCenter = userLoc ? [userLoc.lat, userLoc.lng] : [17.4305, 78.407];
 
 function iconFor(type = "business") {
   const colorByType = {
