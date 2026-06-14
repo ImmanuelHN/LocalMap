@@ -1639,3 +1639,468 @@ img {
     font-weight: 700;
   }
 }
+
+/* ══════════════════════════════════════════════════════════
+   LANDING PAGE — PREMIUM REDESIGN
+   ══════════════════════════════════════════════════════════ */
+
+/* ── Hero Enhancements ──────────────────────────────────── */
+
+.lh-eyebrow {
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  margin-bottom: 18px;
+}
+
+.hero-h1-accent {
+  background: linear-gradient(135deg, #2563eb 0%, #10b981 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero-subheading {
+  font-size: clamp(16px, 2.2vw, 19px);
+  line-height: 1.75;
+  color: #334155;
+  margin: 18px 0 28px;
+  max-width: 580px;
+}
+
+.lh-btn-lg {
+  min-height: 50px;
+  padding: 13px 28px;
+  font-size: 16px;
+  border-radius: 10px;
+}
+
+.button.ghost.lh-btn-ghost-light {
+  background: rgba(255, 255, 255, 0.15);
+  border: 2px solid rgba(255, 255, 255, 0.7);
+  color: #1e293b;
+  backdrop-filter: blur(8px);
+}
+
+.button.ghost.lh-btn-ghost-light:hover {
+  background: rgba(255, 255, 255, 0.35);
+  border-color: white;
+}
+
+/* Trust Badges */
+.hero-trust-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 22px;
+  animation: fadeUp 0.7s 0.35s ease both;
+}
+
+.hero-trust-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 7px 14px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.82);
+  border: 1px solid rgba(37, 99, 235, 0.18);
+  color: #1e40af;
+  font-size: 13px;
+  font-weight: 700;
+  backdrop-filter: blur(6px);
+  box-shadow: 0 2px 8px rgba(37, 99, 235, 0.08);
+}
+
+.hero-trust-badge svg {
+  color: var(--secondary);
+}
+
+/* Hero overlay — subtle dark tint for maximum readability */
+.hero-overlay {
+  background: linear-gradient(
+    100deg,
+    rgba(248, 250, 252, 0.97) 0%,
+    rgba(241, 245, 249, 0.88) 45%,
+    rgba(248, 250, 252, 0.28) 100%
+  );
+}
+
+/* ── Generic Section Layout ─────────────────────────────── */
+
+.lh-section {
+  position: relative;
+}
+
+.lh-section-heading {
+  margin-bottom: 0;
+}
+
+.lh-section-heading h2 {
+  font-size: clamp(28px, 4vw, 42px);
+  margin: 6px 0 0;
+}
+
+.lh-section-subtitle {
+  max-width: 620px;
+  margin: 14px auto 0;
+  font-size: clamp(15px, 1.8vw, 17px);
+  color: var(--muted);
+  line-height: 1.7;
+  text-align: center;
+}
+
+/* ── How LocalHub Works ─────────────────────────────────── */
+
+.lh-feature-grid {
+  margin-top: 48px;
+}
+
+.lh-feature-card {
+  padding: 28px;
+  border-radius: 14px;
+  border: 1px solid var(--line);
+  background: var(--card);
+  box-shadow: 0 4px 20px rgba(15, 23, 42, 0.04);
+}
+
+.lh-feature-card h3 {
+  margin: 14px 0 10px;
+  font-size: 17px;
+  color: var(--text);
+}
+
+.lh-feature-card p {
+  color: var(--muted);
+  font-size: 14.5px;
+  line-height: 1.65;
+}
+
+.lh-card-icon-wrap {
+  display: inline-grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+  color: var(--primary);
+  box-shadow: 0 4px 14px rgba(37, 99, 235, 0.12);
+}
+
+/* ── Who Can Use LocalHub ───────────────────────────────── */
+
+.lh-who-section {
+  background: linear-gradient(180deg, #f8fafc 0%, #eff6ff 100%);
+  padding: 80px 24px;
+}
+
+.lh-who-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 22px;
+  max-width: 1100px;
+  margin: 50px auto 0;
+}
+
+.lh-who-card {
+  padding: 32px 28px;
+  border-radius: 16px;
+  background: white;
+  border: 1px solid var(--line);
+  box-shadow: 0 8px 28px rgba(15, 23, 42, 0.06);
+  transition: transform 180ms ease, box-shadow 180ms ease;
+}
+
+.lh-who-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 52px rgba(37, 99, 235, 0.12);
+}
+
+.lh-who-card h3 {
+  margin: 18px 0 14px;
+  font-size: 20px;
+}
+
+.lh-who-icon {
+  display: inline-grid;
+  place-items: center;
+  width: 56px;
+  height: 56px;
+  border-radius: 14px;
+}
+
+.lh-icon-blue {
+  background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+  color: var(--primary);
+}
+
+.lh-icon-green {
+  background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
+  color: var(--secondary-dark);
+}
+
+.lh-icon-orange {
+  background: linear-gradient(135deg, #ffedd5 0%, #fed7aa 100%);
+  color: #ea580c;
+}
+
+.lh-who-card.lh-who-blue { border-top: 3px solid var(--primary); }
+.lh-who-card.lh-who-green { border-top: 3px solid var(--secondary); }
+.lh-who-card.lh-who-orange { border-top: 3px solid var(--warning); }
+
+.lh-who-points {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 10px;
+}
+
+.lh-who-points li {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  color: var(--muted);
+  font-size: 14.5px;
+  font-weight: 600;
+}
+
+.lh-who-points li svg {
+  flex-shrink: 0;
+  color: var(--secondary);
+}
+
+/* ── Why Choose LocalHub ────────────────────────────────── */
+
+.lh-why-section {
+  background: white;
+}
+
+.lh-why-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 20px;
+  max-width: 1120px;
+  margin: 48px auto 0;
+}
+
+.lh-why-card {
+  padding: 28px 22px;
+  border-radius: 14px;
+  background: var(--card);
+  border: 1px solid var(--line);
+  box-shadow: 0 4px 18px rgba(15, 23, 42, 0.04);
+  text-align: center;
+  transition: transform 180ms ease, box-shadow 180ms ease;
+}
+
+.lh-why-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 40px rgba(37, 99, 235, 0.1);
+  border-color: #bfdbfe;
+}
+
+.lh-why-icon {
+  display: inline-grid;
+  place-items: center;
+  width: 50px;
+  height: 50px;
+  border-radius: 14px;
+  background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+  color: var(--primary);
+  margin-bottom: 14px;
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.1);
+}
+
+.lh-why-card h4 {
+  margin: 0 0 8px;
+  font-size: 16px;
+  color: var(--text);
+}
+
+.lh-why-card p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+/* ── CTA Section ────────────────────────────────────────── */
+
+.lh-cta-section {
+  padding: 72px 24px;
+  background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 60%, #0f3460 100%);
+}
+
+.lh-cta-card {
+  max-width: 700px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.lh-cta-card h2 {
+  font-size: clamp(26px, 4vw, 40px);
+  color: white;
+  margin: 0 0 16px;
+  line-height: 1.2;
+}
+
+.lh-cta-card p {
+  color: rgba(255, 255, 255, 0.75);
+  font-size: clamp(15px, 2vw, 18px);
+  line-height: 1.7;
+  margin: 0 0 34px;
+}
+
+.lh-cta-actions {
+  justify-content: center;
+}
+
+/* ── Footer ─────────────────────────────────────────────── */
+
+.lh-footer {
+  background: #0f172a;
+  padding: 52px 24px 0;
+}
+
+.lh-footer-inner {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 40px;
+  max-width: 1120px;
+  margin: 0 auto;
+  padding-bottom: 40px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  flex-wrap: wrap;
+}
+
+.lh-footer-brand {
+  max-width: 340px;
+}
+
+.lh-footer-logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 16px;
+  font-weight: 800;
+  color: white;
+  letter-spacing: 0.08em;
+  margin-bottom: 14px;
+}
+
+.lh-footer-logo svg {
+  color: var(--secondary);
+}
+
+.lh-footer-brand p {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.55);
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.lh-footer-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 24px;
+  align-items: center;
+}
+
+.lh-footer-nav a {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 14px;
+  font-weight: 600;
+  transition: color 150ms ease;
+}
+
+.lh-footer-nav a:hover {
+  color: white;
+}
+
+.lh-footer-bottom {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 18px 0;
+  text-align: center;
+}
+
+.lh-footer-bottom p {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.35);
+  font-size: 13px;
+}
+
+/* ── Scroll Reveal Animation ────────────────────────────── */
+
+@keyframes lhReveal {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.lh-section .section-heading,
+.lh-feature-card,
+.lh-who-card,
+.lh-why-card {
+  animation: lhReveal 0.55s ease both;
+}
+
+/* ── Responsive Breakpoints ─────────────────────────────── */
+
+@media (max-width: 1100px) {
+  .lh-why-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 820px) {
+  .lh-who-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .lh-why-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .lh-footer-inner {
+    flex-direction: column;
+    gap: 28px;
+  }
+
+  .lh-cta-actions {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .lh-cta-actions .button {
+    width: 100%;
+    max-width: 360px;
+  }
+
+  .hero-trust-badges {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+@media (max-width: 560px) {
+  .lh-who-section,
+  .lh-cta-section,
+  .lh-footer {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .lh-why-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .lh-who-card,
+  .lh-why-card,
+  .lh-feature-card {
+    padding: 22px 18px;
+  }
+
+  .lh-cta-card h2 {
+    font-size: 24px;
+  }
+}
