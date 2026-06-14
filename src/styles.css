@@ -373,18 +373,18 @@ img {
 .hero-content {
   position: relative;
   z-index: 2;
-  max-width: 720px;
+  max-width: 1100px;
   margin-left: min(7vw, 90px);
 }
 
 .hero-content h1 {
-  max-width: 680px;
-  font-size: clamp(34px, 4.8vw, 56px);
-  line-height: 1.12;
+  max-width: 1000px;
+  font-size: clamp(28px, 4.2vw, 54px);
+  line-height: 1.2;
 }
 
 .hero-content p {
-  max-width: 620px;
+  max-width: 950px;
   font-size: 18px;
 }
 
@@ -1653,7 +1653,12 @@ img {
   margin-bottom: 18px;
 }
 
+.hero-h1-line {
+  display: block;
+}
+
 .hero-h1-accent {
+  display: block;
   background: linear-gradient(135deg, #2563eb 0%, #10b981 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -1661,11 +1666,53 @@ img {
 }
 
 .hero-subheading {
-  font-size: clamp(16px, 2.2vw, 19px);
-  line-height: 1.75;
+  font-size: clamp(14px, 1.8vw, 17px);
+  line-height: 1.8;
   color: #334155;
   margin: 18px 0 28px;
-  max-width: 580px;
+  max-width: 950px;
+}
+
+.hero-sub-line {
+  display: block;
+}
+
+/* Force single line display on desktop screens */
+@media (min-width: 1024px) {
+  .hero-h1-line,
+  .hero-h1-accent,
+  .hero-sub-line {
+    white-space: nowrap;
+  }
+}
+
+/* Eyebrow badge at bottom right corner of hero section */
+.hero-eyebrow-badge {
+  position: absolute;
+  bottom: 24px;
+  right: 24px;
+  z-index: 10;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  background: rgba(255, 255, 255, 0.88);
+  border: 1px solid rgba(37, 99, 235, 0.15);
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 800;
+  color: var(--primary);
+  letter-spacing: 0.1em;
+  box-shadow: 0 4px 20px rgba(15, 23, 42, 0.08);
+  backdrop-filter: blur(8px);
+  animation: fadeUp 0.7s 0.4s ease both;
+}
+
+.hero-eyebrow-logo {
+  width: 18px;
+  height: 18px;
+  object-fit: contain;
+  border-radius: 4px;
 }
 
 .lh-btn-lg {
@@ -2104,4 +2151,38 @@ img {
   .lh-cta-card h2 {
     font-size: 24px;
   }
+}
+
+/* ── Logo Image Styles ──────────────────────────────────── */
+
+.sidebar-logo-img {
+  width: 38px;
+  height: 38px;
+  object-fit: contain;
+  border-radius: 8px;
+  background: white;
+  padding: 3px;
+  border: 1px solid var(--line);
+}
+
+.brand-mark {
+  background: white !important;
+  border: 1px solid var(--line);
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.06) !important;
+}
+
+.brand-mark-img {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+  border-radius: 6px;
+}
+
+.lh-footer-logo-img {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+  border-radius: 4px;
+  background: white;
+  padding: 2px;
 }

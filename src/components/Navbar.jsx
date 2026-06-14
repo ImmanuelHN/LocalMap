@@ -1,4 +1,4 @@
-import { LogOut, MapPinned, UserRound } from "lucide-react";
+import { LogOut, UserRound } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { getCurrentUser, logout } from "../utils/storage.js";
 
@@ -21,7 +21,7 @@ export default function Navbar() {
     <header className="navbar">
       <div className="brand-lockup">
         <span className="brand-mark">
-          <MapPinned size={20} />
+          <img src="/LH.png" alt="LocalHub" className="brand-mark-img" />
         </span>
         <div>
           <strong>LOCALHUB</strong>

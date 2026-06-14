@@ -34,7 +34,7 @@ export default function Sidebar({ role }) {
   return (
     <aside className="sidebar">
       <div className="sidebar-logo">
-        <span>LH</span>
+        <img src="/LH.png" alt="LocalHub" className="sidebar-logo-img" />
         <strong>LOCALHUB</strong>
       </div>
 

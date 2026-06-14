@@ -152,20 +152,13 @@ export default function LandingPage() {
         </div>
         <div className="hero-overlay" />
         <div className="hero-content">
-          <span className="eyebrow lh-eyebrow">
-            LOCALHUB • COMMUNITY COMMERCE PLATFORM
-          </span>
           <h1>
-            Discover, Connect &amp; Order
-            <br />
+            <span className="hero-h1-line">Discover, Connect &amp; Order</span>
             <span className="hero-h1-accent">From Local Businesses Near You</span>
           </h1>
           <p className="hero-subheading">
-            Find home-based businesses, cloud kitchens, freelancers, local shops
-            and services around you.
-            <br />
-            Chat directly with sellers, place orders, and receive deliveries
-            through trusted local riders.
+            <span className="hero-sub-line">Find home-based businesses, cloud kitchens, freelancers, local shops and services around you.</span>
+            <span className="hero-sub-line">Chat directly with sellers, place orders, and receive deliveries through trusted local riders.</span>
           </p>
           <div className="hero-actions">
             <Link
@@ -198,12 +191,16 @@ export default function LandingPage() {
             ))}
           </div>
         </div>
+
+        <span className="hero-eyebrow-badge">
+          <img src="/LH.png" alt="LocalHub" className="hero-eyebrow-logo" />
+          LOCALHUB • COMMUNITY COMMERCE PLATFORM
+        </span>
       </section>
 
       {/* ── SECTION 2: HOW LOCALHUB WORKS ─────────────────────── */}
       <section className="lh-section feature-band">
         <div className="section-heading centered lh-section-heading">
-          <span className="eyebrow">How LocalHub Works</span>
           <h2>How LocalHub Works</h2>
           <p className="lh-section-subtitle">
             A simple way to discover local businesses, connect directly with
@@ -314,7 +311,7 @@ export default function LandingPage() {
         <div className="lh-footer-inner">
           <div className="lh-footer-brand">
             <span className="lh-footer-logo">
-              <MapPinned size={18} />
+              <img src="/LH.png" alt="LocalHub" className="lh-footer-logo-img" />
               LOCALHUB
             </span>
             <p>
