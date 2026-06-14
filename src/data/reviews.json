@@ -1,0 +1,92 @@
+[
+  {
+    "id": "review-1",
+    "businessId": "home-bakery",
+    "author": "Nisha",
+    "rating": 5,
+    "text": "The chocolate truffle cake tasted premium and was packed beautifully for pickup.",
+    "photo": "https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=600&q=80",
+    "createdAt": "2026-05-28"
+  },
+  {
+    "id": "review-2",
+    "businessId": "cloud-kitchen",
+    "author": "Kabir",
+    "rating": 4,
+    "text": "The lunch box arrived hot and the portions were generous.",
+    "photo": "",
+    "createdAt": "2026-05-29"
+  },
+  {
+    "id": "review-3",
+    "businessId": "tailor-shop",
+    "author": "Asha",
+    "rating": 5,
+    "text": "My blouse fitting was fixed in one day. Very professional.",
+    "photo": "",
+    "createdAt": "2026-06-01"
+  },
+  {
+    "id": "review-4",
+    "businessId": "handmade-crafts",
+    "author": "Rohan",
+    "rating": 5,
+    "text": "Great hamper for a housewarming gift. The owner customized everything.",
+    "photo": "https://images.unsplash.com/photo-1513201099705-a9746e1e201f?auto=format&fit=crop&w=600&q=80",
+    "createdAt": "2026-06-02"
+  },
+  {
+    "id": "review-5",
+    "businessId": "beauty-services",
+    "author": "Manasa",
+    "rating": 4,
+    "text": "Easy to book and the stylist arrived on time.",
+    "photo": "",
+    "createdAt": "2026-06-03"
+  },
+  {
+    "id": "review-6",
+    "businessId": "electrician",
+    "author": "Karthik",
+    "rating": 5,
+    "text": "Quick fan repair and transparent pricing.",
+    "photo": "",
+    "createdAt": "2026-06-04"
+  },
+  {
+    "id": "review-7",
+    "businessId": "mechanic",
+    "author": "Sameer",
+    "rating": 4,
+    "text": "Battery jumpstart was handled at my apartment parking area.",
+    "photo": "",
+    "createdAt": "2026-06-05"
+  },
+  {
+    "id": "review-8",
+    "businessId": "freelance-designer",
+    "author": "Divya",
+    "rating": 5,
+    "text": "Loved the social media templates. They made my cafe page look polished.",
+    "photo": "",
+    "createdAt": "2026-06-06"
+  },
+  {
+    "id": "review-9",
+    "businessId": "organic-grocer",
+    "author": "Neel",
+    "rating": 4,
+    "text": "Fresh vegetables and a very practical weekly subscription option.",
+    "photo": "",
+    "createdAt": "2026-06-07"
+  },
+  {
+    "id": "review-10",
+    "businessId": "pet-care-home",
+    "author": "Leela",
+    "rating": 5,
+    "text": "Helpful updates during the visit and careful handling of my booking.",
+    "photo": "",
+    "createdAt": "2026-06-08"
+  }
+]

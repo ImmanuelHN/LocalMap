@@ -1,0 +1,62 @@
+[
+  {
+    "id": "rider-1",
+    "name": "Aditya",
+    "phone": "+91 98765 20001",
+    "photo": "",
+    "vehicleType": "Bike",
+    "vehicleNumber": "TS09 AB 1201",
+    "licenseNumber": "DL-TS-7781",
+    "rating": 4.8,
+    "status": "Available",
+    "location": { "lat": 17.4282, "lng": 78.4241 }
+  },
+  {
+    "id": "rider-2",
+    "name": "Farhan",
+    "phone": "+91 98765 20002",
+    "photo": "",
+    "vehicleType": "Scooter",
+    "vehicleNumber": "TS10 CD 3302",
+    "licenseNumber": "DL-TS-8812",
+    "rating": 4.6,
+    "status": "On Delivery",
+    "location": { "lat": 17.4432, "lng": 78.3954 }
+  },
+  {
+    "id": "rider-3",
+    "name": "Jaya",
+    "phone": "+91 98765 20003",
+    "photo": "",
+    "vehicleType": "Bike",
+    "vehicleNumber": "TS11 EF 5403",
+    "licenseNumber": "DL-TS-9923",
+    "rating": 4.9,
+    "status": "Available",
+    "location": { "lat": 17.4522, "lng": 78.3695 }
+  },
+  {
+    "id": "rider-4",
+    "name": "Mohan",
+    "phone": "+91 98765 20004",
+    "photo": "",
+    "vehicleType": "Bike",
+    "vehicleNumber": "TS12 GH 7614",
+    "licenseNumber": "DL-TS-1134",
+    "rating": 4.5,
+    "status": "Available",
+    "location": { "lat": 17.4147, "lng": 78.4019 }
+  },
+  {
+    "id": "rider-5",
+    "name": "Sana",
+    "phone": "+91 98765 20005",
+    "photo": "",
+    "vehicleType": "Scooter",
+    "vehicleNumber": "TS13 JK 2285",
+    "licenseNumber": "DL-TS-2245",
+    "rating": 4.7,
+    "status": "Offline",
+    "location": { "lat": 17.3991, "lng": 78.3791 }
+  }
+]

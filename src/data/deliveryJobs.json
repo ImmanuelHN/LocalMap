@@ -1,0 +1,57 @@
+[
+  {
+    "id": "delivery-1",
+    "pickupBusinessId": "home-bakery",
+    "pickup": "Home Bakery, Banjara Hills",
+    "drop": "Aparna Towers, Madhapur",
+    "pickupLocation": { "lat": 17.4156, "lng": 78.4347 },
+    "dropLocation": { "lat": 17.4483, "lng": 78.3915 },
+    "distance": 5.8,
+    "payment": 120,
+    "status": "Available"
+  },
+  {
+    "id": "delivery-2",
+    "pickupBusinessId": "cloud-kitchen",
+    "pickup": "Cloud Kitchen, Jubilee Hills",
+    "drop": "My Home Bhooja, HITEC City",
+    "pickupLocation": { "lat": 17.4305, "lng": 78.407 },
+    "dropLocation": { "lat": 17.4519, "lng": 78.3802 },
+    "distance": 4.4,
+    "payment": 95,
+    "status": "Assigned"
+  },
+  {
+    "id": "delivery-3",
+    "pickupBusinessId": "handmade-crafts",
+    "pickup": "Handmade Crafts, Kondapur",
+    "drop": "Botanical Garden Road",
+    "pickupLocation": { "lat": 17.4623, "lng": 78.3568 },
+    "dropLocation": { "lat": 17.4557, "lng": 78.3668 },
+    "distance": 2.1,
+    "payment": 70,
+    "status": "Picked Up"
+  },
+  {
+    "id": "delivery-4",
+    "pickupBusinessId": "organic-grocer",
+    "pickup": "Organic Grocer, Manikonda",
+    "drop": "Narsingi Circle",
+    "pickupLocation": { "lat": 17.4032, "lng": 78.3816 },
+    "dropLocation": { "lat": 17.3898, "lng": 78.3562 },
+    "distance": 3.8,
+    "payment": 85,
+    "status": "Delivered"
+  },
+  {
+    "id": "delivery-5",
+    "pickupBusinessId": "mechanic",
+    "pickup": "Mechanic, HITEC City",
+    "drop": "KPHB Colony",
+    "pickupLocation": { "lat": 17.4504, "lng": 78.3812 },
+    "dropLocation": { "lat": 17.4933, "lng": 78.3998 },
+    "distance": 6.2,
+    "payment": 135,
+    "status": "Available"
+  }
+]

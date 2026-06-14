@@ -1,0 +1,122 @@
+[
+  {
+    "id": "order-1",
+    "businessId": "home-bakery",
+    "businessName": "Home Bakery",
+    "customerName": "Nisha",
+    "productName": "Chocolate Truffle Cake",
+    "quantity": 1,
+    "instructions": "Write Happy Birthday on top.",
+    "status": "Pending",
+    "total": 950,
+    "createdAt": "2026-06-01"
+  },
+  {
+    "id": "order-2",
+    "businessId": "cloud-kitchen",
+    "businessName": "Cloud Kitchen",
+    "customerName": "Kabir",
+    "productName": "Veg Biryani Bowl",
+    "quantity": 2,
+    "instructions": "Less spicy.",
+    "status": "Accepted",
+    "total": 420,
+    "createdAt": "2026-06-03"
+  },
+  {
+    "id": "order-3",
+    "businessId": "tailor-shop",
+    "businessName": "Tailor Shop",
+    "customerName": "Asha",
+    "productName": "Alteration Service",
+    "quantity": 1,
+    "instructions": "Need by Friday evening.",
+    "status": "Preparing",
+    "total": 300,
+    "createdAt": "2026-06-04"
+  },
+  {
+    "id": "order-4",
+    "businessId": "handmade-crafts",
+    "businessName": "Handmade Crafts",
+    "customerName": "Rohan",
+    "productName": "Gift Hamper",
+    "quantity": 1,
+    "instructions": "Add a thank you note.",
+    "status": "Ready",
+    "total": 1200,
+    "createdAt": "2026-06-05"
+  },
+  {
+    "id": "order-5",
+    "businessId": "beauty-services",
+    "businessName": "Beauty Services",
+    "customerName": "Manasa",
+    "productName": "Party Makeup",
+    "quantity": 1,
+    "instructions": "Appointment at 6 PM.",
+    "status": "Completed",
+    "total": 1800,
+    "createdAt": "2026-06-06"
+  },
+  {
+    "id": "order-6",
+    "businessId": "electrician",
+    "businessName": "Electrician",
+    "customerName": "Karthik",
+    "productName": "Fan Repair",
+    "quantity": 2,
+    "instructions": "Please bring regulator.",
+    "status": "Completed",
+    "total": 700,
+    "createdAt": "2026-06-07"
+  },
+  {
+    "id": "order-7",
+    "businessId": "mechanic",
+    "businessName": "Mechanic",
+    "customerName": "Sameer",
+    "productName": "Bike Service",
+    "quantity": 1,
+    "instructions": "Doorstep inspection first.",
+    "status": "Accepted",
+    "total": 1100,
+    "createdAt": "2026-06-08"
+  },
+  {
+    "id": "order-8",
+    "businessId": "freelance-designer",
+    "businessName": "Freelance Designer",
+    "customerName": "Divya",
+    "productName": "Instagram Template Pack",
+    "quantity": 1,
+    "instructions": "Cafe colors are blue and green.",
+    "status": "Preparing",
+    "total": 2500,
+    "createdAt": "2026-06-09"
+  },
+  {
+    "id": "order-9",
+    "businessId": "organic-grocer",
+    "businessName": "Organic Grocer",
+    "customerName": "Neel",
+    "productName": "Weekly Vegetable Box",
+    "quantity": 1,
+    "instructions": "No brinjal this week.",
+    "status": "Pending",
+    "total": 650,
+    "createdAt": "2026-06-10"
+  },
+  {
+    "id": "order-10",
+    "businessId": "pet-care-home",
+    "businessName": "Neighborhood Pet Care",
+    "customerName": "Leela",
+    "productName": "Home Visit Care",
+    "quantity": 1,
+    "instructions": "Two visits between 10 AM and 7 PM.",
+    "status": "Ready",
+    "total": 900,
+    "createdAt": "2026-06-11"
+  }
+]

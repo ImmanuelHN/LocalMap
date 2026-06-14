@@ -1,0 +1,162 @@
+[
+  {
+    "id": "home-bakery",
+    "name": "Home Bakery",
+    "category": "Bakery",
+    "distance": 0.7,
+    "rating": 4.8,
+    "phone": "+91 98765 10001",
+    "owner": "Anika Rao",
+    "address": "Road 3, Banjara Hills",
+    "description": "Fresh cakes, cupcakes, brownies, and party desserts baked from a licensed home kitchen.",
+    "location": { "lat": 17.4156, "lng": 78.4347 },
+    "images": [
+      "https://images.unsplash.com/photo-1486427944299-d1955d23e34d?auto=format&fit=crop&w=900&q=80",
+      "https://images.unsplash.com/photo-1519869325930-281384150729?auto=format&fit=crop&w=900&q=80"
+    ]
+  },
+  {
+    "id": "cloud-kitchen",
+    "name": "Cloud Kitchen",
+    "category": "Cloud Kitchen",
+    "distance": 1.1,
+    "rating": 4.6,
+    "phone": "+91 98765 10002",
+    "owner": "Rahul Menon",
+    "address": "Jubilee Hills Check Post",
+    "description": "Homestyle lunch boxes, biryani bowls, and late evening snacks prepared for quick delivery.",
+    "location": { "lat": 17.4305, "lng": 78.407 },
+    "images": [
+      "https://images.unsplash.com/photo-1512058564366-18510be2db19?auto=format&fit=crop&w=900&q=80",
+      "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=900&q=80"
+    ]
+  },
+  {
+    "id": "tailor-shop",
+    "name": "Tailor Shop",
+    "category": "Tailor",
+    "distance": 1.4,
+    "rating": 4.4,
+    "phone": "+91 98765 10003",
+    "owner": "Meera Khan",
+    "address": "Madhapur Main Road",
+    "description": "Alterations, custom blouses, uniforms, formal wear fittings, and express repair services.",
+    "location": { "lat": 17.4483, "lng": 78.3915 },
+    "images": [
+      "https://images.unsplash.com/photo-1558769132-cb1aea458c5e?auto=format&fit=crop&w=900&q=80",
+      "https://images.unsplash.com/photo-1452860606245-08befc0ff44b?auto=format&fit=crop&w=900&q=80"
+    ]
+  },
+  {
+    "id": "handmade-crafts",
+    "name": "Handmade Crafts",
+    "category": "Handmade Products",
+    "distance": 2.1,
+    "rating": 4.9,
+    "phone": "+91 98765 10004",
+    "owner": "Ishita Das",
+    "address": "Kondapur Market Lane",
+    "description": "Handmade candles, decor pieces, greeting cards, and customized gift hampers.",
+    "location": { "lat": 17.4623, "lng": 78.3568 },
+    "images": [
+      "https://images.unsplash.com/photo-1513519245088-0e12902e5a38?auto=format&fit=crop&w=900&q=80",
+      "https://images.unsplash.com/photo-1517705008128-361805f42e86?auto=format&fit=crop&w=900&q=80"
+    ]
+  },
+  {
+    "id": "beauty-services",
+    "name": "Beauty Services",
+    "category": "Beauty",
+    "distance": 2.5,
+    "rating": 4.7,
+    "phone": "+91 98765 10005",
+    "owner": "Sara Joseph",
+    "address": "Gachibowli Road",
+    "description": "At-home salon appointments, bridal makeup trials, grooming, hair styling, and skincare packages.",
+    "location": { "lat": 17.4444, "lng": 78.3498 },
+    "images": [
+      "https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=900&q=80",
+      "https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=900&q=80"
+    ]
+  },
+  {
+    "id": "electrician",
+    "name": "Electrician",
+    "category": "Electrician",
+    "distance": 3.0,
+    "rating": 4.5,
+    "phone": "+91 98765 10006",
+    "owner": "Vikram Patil",
+    "address": "Film Nagar",
+    "description": "Same-day repairs for switches, fans, lighting, wiring checks, and appliance connections.",
+    "location": { "lat": 17.4248, "lng": 78.4061 },
+    "images": [
+      "https://images.unsplash.com/photo-1621905251189-08b45d6a269e?auto=format&fit=crop&w=900&q=80",
+      "https://images.unsplash.com/photo-1581092921461-eab62e97a780?auto=format&fit=crop&w=900&q=80"
+    ]
+  },
+  {
+    "id": "mechanic",
+    "name": "Mechanic",
+    "category": "Mechanic",
+    "distance": 3.2,
+    "rating": 4.3,
+    "phone": "+91 98765 10007",
+    "owner": "Naveen Reddy",
+    "address": "HITEC City Service Road",
+    "description": "Bike repairs, puncture service, battery support, oil changes, and doorstep vehicle checks.",
+    "location": { "lat": 17.4504, "lng": 78.3812 },
+    "images": [
+      "https://images.unsplash.com/photo-1607860108855-64acf2078ed9?auto=format&fit=crop&w=900&q=80",
+      "https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?auto=format&fit=crop&w=900&q=80"
+    ]
+  },
+  {
+    "id": "freelance-designer",
+    "name": "Freelance Designer",
+    "category": "Freelancer",
+    "distance": 3.7,
+    "rating": 4.8,
+    "phone": "+91 98765 10008",
+    "owner": "Priya Nair",
+    "address": "Kavuri Hills",
+    "description": "Logo design, cafe menus, social media creatives, product packaging, and local brand kits.",
+    "location": { "lat": 17.4351, "lng": 78.3981 },
+    "images": [
+      "https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=900&q=80",
+      "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=900&q=80"
+    ]
+  },
+  {
+    "id": "organic-grocer",
+    "name": "Organic Grocer",
+    "category": "Other",
+    "distance": 4.2,
+    "rating": 4.5,
+    "phone": "+91 98765 10009",
+    "owner": "Arjun Shah",
+    "address": "Manikonda Circle",
+    "description": "Daily vegetables, fruit boxes, organic pantry staples, and curated weekly grocery bundles.",
+    "location": { "lat": 17.4032, "lng": 78.3816 },
+    "images": [
+      "https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=900&q=80",
+      "https://images.unsplash.com/photo-1543168256-418811576931?auto=format&fit=crop&w=900&q=80"
+    ]
+  },
+  {
+    "id": "pet-care-home",
+    "name": "Neighborhood Pet Care",
+    "category": "Other",
+    "distance": 4.8,
+    "rating": 4.6,
+    "phone": "+91 98765 10010",
+    "owner": "Devika S",
+    "address": "Nanakramguda",
+    "description": "Boarding, grooming coordination, walking slots, and home visit care for nearby households.",
+    "location": { "lat": 17.4101, "lng": 78.342 },
+    "images": [
+      "https://images.unsplash.com/photo-1601758063890-1167f394febb?auto=format&fit=crop&w=900&q=80",
+      "https://images.unsplash.com/photo-1583337130417-3346a1be7dee?auto=format&fit=crop&w=900&q=80"
+    ]
+  }
+]
